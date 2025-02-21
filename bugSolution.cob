@@ -1,0 +1,23 @@
+01  WS-AREA. 
+    05  WS-DATE PIC 9(8). 
+    05  WS-TIME PIC 9(6). 
+    05  WS-MONTH PIC 99. 
+    05  WS-DAY PIC 99. 
+    05  WS-YEAR PIC 9(4). 
+
+PROCEDURE DIVISION.
+    DISPLAY "Enter date (YYYYMMDD):" 
+    ACCEPT WS-DATE
+    DISPLAY "Enter time (HHMMSS):" 
+    ACCEPT WS-TIME
+
+    MOVE WS-DATE(1:4) TO WS-YEAR
+    MOVE WS-DATE(5:2) TO WS-MONTH
+    MOVE WS-DATE(7:2) TO WS-DAY
+
+    IF WS-YEAR > 9999 OR WS-MONTH > 12 OR WS-MONTH < 1 OR WS-DAY > 31 OR WS-DAY < 1 THEN
+       DISPLAY "Invalid date." 
+    ELSE
+       DISPLAY "Valid date and time." 
+    END-IF.
+    STOP RUN.
